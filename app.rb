@@ -24,13 +24,12 @@ end
 
 get "/" do
     puts blog_table.all
-    @blog = blog_table.all.to_a
-    view "blog"
+    @home = blog_table.all.to_a
+    view "home"
 end
 get "/blog/:id" do
     @blog = blog_table.where(id: params[:id]).to_a[0]
-    @comments = comments_table.where(event_id: @comments[:id])
-    @like_count = comments_table.where(event_id: @like_count[:id], like: true).count
+    @comments = comments_table.where(blog_id: @blog[:id])
     @users_table = users_table
     view "blog"
 end
@@ -45,7 +44,7 @@ get "/blog/:id/comments/create" do
     @blog = blog_table.where(id: params["id"]).to_a[0]
     comments_table.insert(blog_id: params["id"],
                        user_id: session["user_id"],
-                       like: params["going"],
+                       like: params["like"],
                        comments: params["comments"])
     view "create_comment"
 end
@@ -58,7 +57,7 @@ post "/users/create" do
     puts params
     hashed_password = BCrypt::Password.create(params["password"])
     users_table.insert(name: params["name"], email: params["email"], password: hashed_password)
-    view "create_comment"
+    view "create_user"
 end
 
 get "/logins/new" do
@@ -75,4 +74,10 @@ post "/logins/create" do
     else
         view "create_login_failed"
     end
+end
+
+get "/logout" do
+    session["user_id"] = nil
+    @current_user = nil
+    view "logout"
 end

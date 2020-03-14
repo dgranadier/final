@@ -1,0 +1,16 @@
+<h1>Thanks for signing up with GigUp Tips!</h1>
+<p><a href="/" class="btn btn-primary">Go Home</a></p>
+
+# put your API credentials here (found on your Twilio dashboard)
+account_sid = "AC1327995555d72de69354eb8d7546a8f5"
+auth_token = "47288d01b9e5069a029a8c3e2c27d946"
+
+# set up a client to talk to the Twilio REST API
+client = Twilio::REST::Client.new(AC1327995555d72de69354eb8d7546a8f5, 47288d01b9e5069a029a8c3e2c27d946)
+
+# send the SMS from your trial Twilio number to your verified non-Twilio number
+client.messages.create(
+ from: "+11234567890", 
+ to: "+15555555555",
+ body: "Hey KIEI 451!"
+)

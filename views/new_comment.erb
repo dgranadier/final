@@ -1,0 +1,28 @@
+<h2>
+    <i class="far fa-calendar-alt"></i>
+    <%= @blog[:date] %>
+</h2>
+<h1>Comment for <%= @blog[:title] %></h1>
+
+<form action="/blog/<%= @blog[:id] %>/comments/create">
+  <div class="form-group">
+    <label>Do you like this blog?</label>
+   <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Like
+  </label>
+  <p><input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Dislike
+  </label></p>
+</div>
+  </div>
+  <div class="form-group">
+    <label>Comments</label>
+    <textarea class="form-control" rows="3" name="comments"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
