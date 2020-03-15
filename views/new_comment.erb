@@ -4,25 +4,31 @@
 </h2>
 <h1>Comment for <%= @blog[:title] %></h1>
 
-<form action="/blog/<%= @blog[:id] %>/comments/create">
-  <div class="form-group">
-    <label>Do you like this blog?</label>
-   <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Like
-  </label>
-  <p><input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Dislike
-  </label></p>
-</div>
-  </div>
-  <div class="form-group">
-    <label>Comments</label>
-    <textarea class="form-control" rows="3" name="comments"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+        <form action="/blog/<%= @blog[:id] %>/comments/create">
+        <div class="form-group">
+            <label>Do you like this blog content?</label>
+                 <div class="col-sm-6">
+                 <p><input class="form-check-input" type="radio" name="like" value="option1" checked>
+                    <label>
+                    Yes, I like it!
+                    </label></p>
+                <p><input class="form-check-input" type="radio" name="like" value="option2">
+                    <label>
+                    No, I am not a fan.
+                    </label></p>
+        </div>
+        </div>
+     
+
+        <div class="form-group">
+            <label>What other topics are you interested in?</label>
+            <textarea class="form-control" rows="1" name="topics"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Comments</label>
+            <textarea class="form-control" rows="3" name="comments"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 
 

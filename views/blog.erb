@@ -7,11 +7,6 @@
         <p><%= @blog[:content] %></p>
         <% for comments in @comments %>
             <div class="media">
-                <% if comments[:like] %>
-                    <i class="fas fa-thumbs-up fa-3x mr-3"></i>
-                <% else %>
-                    <i class="fas fa-thumbs-down fa-3x mr-3"></i>
-                <% end %>
                 <div class="media-body">
                     <h5 class="mt-0"><%= @users_table.where(id: comments[:user_id]).to_a[0][:name] %></h5>
                     <%= comments[:comments] %>

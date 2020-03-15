@@ -19,6 +19,7 @@ DB.create_table! :comments do
   Boolean :like
   String :name
   String :email
+  String :topics, text: true
   String :comments, text: true
 end
 

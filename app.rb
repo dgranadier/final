@@ -13,7 +13,15 @@ use Rack::Session::Cookie, key: 'rack.session', path: '/', secret: 'secret'     
 before { puts; puts "--------------- NEW REQUEST ---------------"; puts }             #
 after { puts; }                                                                       #
 #######################################################################################
+    # put your API credentials here (found on your Twilio dashboard)
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
+
+    # set up a client to talk to the Twilio REST API
+    client = Twilio::REST::Client.new(account_sid, auth_token)
     
+    from = '+12029329830' # Your Twilio number
+    to = '+12483301268' # Your mobile phone number
   
 blog_table = DB.from(:blog)
 comments_table = DB.from(:comments)
@@ -58,6 +66,10 @@ post "/users/create" do
     puts params
     hashed_password = BCrypt::Password.create(params["password"])
     users_table.insert(name: params["name"], email: params["email"], password: hashed_password)
+    client.messages.create(
+        from: from,
+        to: to,
+        body: "Welcome to GigUp!")
     view "create_user"
 end
 
