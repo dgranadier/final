@@ -13,7 +13,8 @@ use Rack::Session::Cookie, key: 'rack.session', path: '/', secret: 'secret'     
 before { puts; puts "--------------- NEW REQUEST ---------------"; puts }             #
 after { puts; }                                                                       #
 #######################################################################################
-
+    
+  
 blog_table = DB.from(:blog)
 comments_table = DB.from(:comments)
 users_table = DB.from(:users)
