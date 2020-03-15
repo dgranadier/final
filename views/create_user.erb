@@ -11,6 +11,6 @@ client = Twilio::REST::Client.new(AC1327995555d72de69354eb8d7546a8f5, 47288d01b9
 # send the SMS from your trial Twilio number to your verified non-Twilio number
 client.messages.create(
  from: "+11234567890", 
- to: <%= @users_table[:phone] %>,
+ to: "+12483301268",
  body: "Welcome to GigUp!"
 )
