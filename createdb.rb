@@ -10,6 +10,7 @@ DB.create_table! :blog do
   String :title
   String :content, text: true
   String :date
+  String :img
 end
 DB.create_table! :comments do
   primary_key :id
